@@ -1,0 +1,70 @@
+<h1>予約一覧</h1>
+
+<% @reservations.each do |r| %>
+
+<% if r.room.image.attached? %>
+
+<%= image_tag(
+r.room.image,
+width:250
+) %>
+
+<% end %>
+
+<h2>
+
+<%= r.room.name %>
+
+</h2>
+
+<p>
+
+人数：
+
+<%= r.people %>
+
+</p>
+
+<p>
+
+合計：
+
+¥<%= number_with_delimiter(
+r.total_price
+) %>
+
+</p>
+
+<p>
+
+チェックイン：
+
+<%= r.check_in.strftime(
+"%Y/%m/%d"
+) %>
+
+</p>
+
+<p>
+
+チェックアウト：
+
+<%= r.check_out.strftime(
+"%Y/%m/%d"
+) %>
+
+</p>
+
+<p>
+
+予約日時：
+
+<%= r.created_at.strftime(
+"%Y/%m/%d %H:%M"
+) %>
+
+</p>
+
+<hr>
+
+<% end %>

@@ -1,0 +1,71 @@
+<h1>施設検索</h1>
+
+<%= form_with(
+url:
+search_rooms_path,
+method:
+:get,
+local:true
+) do |f| %>
+
+<p>
+
+キーワード
+
+<br>
+
+<%= f.text_field :keyword %>
+
+</p>
+
+<p>
+
+エリア
+
+<br>
+
+<%= f.select(
+:area,
+[
+"",
+"東京",
+"大阪",
+"京都",
+"札幌"
+]
+) %>
+
+</p>
+
+<%= f.submit "検索" %>
+
+<% end %>
+
+<hr>
+
+<% @rooms.each do |room| %>
+
+<h2>
+
+<%= link_to(
+room.name,
+room
+) %>
+
+</h2>
+
+<p>
+
+<%= room.address %>
+
+</p>
+
+<p>
+
+¥<%= room.price %>
+
+</p>
+
+<hr>
+
+<% end %>

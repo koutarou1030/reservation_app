@@ -1,0 +1,58 @@
+<h1>予約確認</h1>
+
+<h2>
+
+<%= @room.name %>
+
+</h2>
+
+<p>
+
+料金：
+
+¥<%= @room.price %>/日
+
+</p>
+
+<%= form_with(
+model:[
+@room,
+@reservation
+]
+) do |f| %>
+
+<p>
+
+チェックイン
+
+<br>
+
+<%= f.date_field :check_in %>
+
+</p>
+
+<p>
+
+チェックアウト
+
+<br>
+
+<%= f.date_field :check_out %>
+
+</p>
+
+<p>
+
+人数
+
+<br>
+
+<%= f.number_field :people %>
+
+</p>
+
+<br>
+
+<%= f.submit "予約確定" %>
+
+<% end %>

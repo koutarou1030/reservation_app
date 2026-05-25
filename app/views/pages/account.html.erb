@@ -1,0 +1,41 @@
+<h1>アカウント情報</h1>
+
+<% if current_user.image.attached? %>
+
+<%= image_tag(
+current_user.image,
+width:150
+) %>
+
+<% end %>
+
+<p>
+
+名前：
+
+<%= current_user.name %>
+
+</p>
+
+<p>
+
+メール：
+
+<%= current_user.email %>
+
+</p>
+
+<p>
+
+パスワード：
+
+********
+
+</p>
+
+<br>
+
+<%= link_to(
+"プロフィール編集",
+profile_path
+) %>
