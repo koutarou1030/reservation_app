@@ -1,0 +1,85 @@
+<h1>施設編集</h1>
+
+<%= form_with(
+model: @room,
+local: true,
+html: {
+multipart: true
+}
+) do |f| %>
+
+<p>
+
+施設名
+
+<br>
+
+<%= f.text_field :name %>
+
+</p>
+
+<p>
+
+施設説明
+
+<br>
+
+<%= f.text_area :introduction %>
+
+</p>
+
+<p>
+
+料金
+
+<br>
+
+<%= f.number_field :price %>
+
+</p>
+
+<p>
+
+住所
+
+<br>
+
+<%= f.text_field :address %>
+
+</p>
+
+<p>
+
+施設画像
+
+<br>
+
+<%= f.file_field :image %>
+
+</p>
+
+<br>
+
+<% if @room.image.attached? %>
+
+<%= image_tag(
+@room.image,
+width:300
+) %>
+
+<br>
+
+<% end %>
+
+<br>
+
+<%= f.submit "更新する" %>
+
+<% end %>
+
+<br>
+
+<%= link_to(
+"施設詳細へ戻る",
+room_path(@room)
+) %>

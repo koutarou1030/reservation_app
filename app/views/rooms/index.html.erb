@@ -1,0 +1,23 @@
+<h1>施設一覧</h1>
+
+<%= link_to "施設を登録する", new_room_path %>
+
+<hr>
+
+<% @rooms.each do |room| %>
+
+  <div style="margin-bottom: 30px;">
+
+    <h2>
+      <%= link_to room.name, room_path(room) %>
+    </h2>
+
+    <p><%= room.introduction %></p>
+
+    <p>¥<%= room.price %>/日</p>
+
+    <p><%= room.address %></p>
+
+  </div>
+
+<% end %>
