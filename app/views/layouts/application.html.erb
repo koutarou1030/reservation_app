@@ -3,15 +3,15 @@
 
 <head>
 
-<title>宿泊予約アプリ</title>
+  <title>宿泊予約アプリ</title>
 
-<%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>
 
-<%= csp_meta_tag %>
+  <%= csp_meta_tag %>
 
-<%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "application" %>
 
-<%= javascript_importmap_tags %>
+  <%= javascript_importmap_tags %>
 
 </head>
 
@@ -27,23 +27,54 @@
 
 ようこそ
 
-<%= current_user.name %>
+<details style="display:inline;">
 
-|
+<summary style="display:inline; cursor:pointer;">
 
-<%= link_to(
-"施設一覧",
-rooms_path
+<% if current_user.image.attached? %>
+
+<%= image_tag(
+current_user.image,
+width:40,
+height:40
 ) %>
 
-|
+<% else %>
+
+<%= image_tag(
+"default_user.png",
+width:40,
+height:40
+) %>
+
+<% end %>
+
+<%= current_user.name %>
+
+</summary>
+
+<div>
 
 <%= link_to(
 "マイページ",
 account_path
 ) %>
 
-|
+<br>
+
+<%= link_to(
+"施設一覧",
+rooms_path
+) %>
+
+<br>
+
+<%= link_to(
+"予約一覧",
+reservations_path
+) %>
+
+<br><br>
 
 <%= button_to(
 "ログアウト",
@@ -51,7 +82,13 @@ destroy_user_session_path,
 method: :delete
 ) %>
 
+</div>
+
+</details>
+
 <% else %>
+
+|
 
 <%= link_to(
 "ログイン",
